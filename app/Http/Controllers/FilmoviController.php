@@ -47,7 +47,21 @@ class FilmoviController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $filmovi = new FilmoviController;
+		$filmovi->naslov = $request->all()['naslov'];
+		if ($request->all()['description']) $filmovi->description = $request->all()['description'];
+		else $filmovi->description = "";
+		$filmovi->amount = $request->all()['amount'];
+		$filmovi->price = $request->all()['price'];
+		if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $extension = $request->image->extension();
+			$filmovi->image = "./slike/".$filmovi->name.".".$extension;
+			$file = $request->file('image');
+			$file->move( "slike", $filmovi->name.".".$extension );
+        }
+		else $filmovi->image = "";
+		$filmovi->save();
+		return redirect( '/' );
     }
 
     /**

@@ -23,8 +23,8 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::post('/unos', 'App\Http\Controllers\FilmoviController@index')->name('unos');
+Route::get('/unos', 'App\Http\Controllers\FilmoviController@zanr')->name('unos');
 
 
 
-Route::get('/unos', 'App\Http\Controllers\FilmoviController@zanr');
+Route::get('/unos', 'App\Http\Controllers\FilmoviController@store')->name('noviunos');

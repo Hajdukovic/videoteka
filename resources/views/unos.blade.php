@@ -9,7 +9,7 @@
                 <div class="card-header">Dodavanje novog filma</div>
 
                 <div class="card-body">
-                    <form method="POST" action="  " enctype="multipart/form-data" >
+                    <form method="POST" action=" {{ route('noviunos') }} " enctype="multipart/form-data" >
                         @csrf
 
                         <div class="form-group row">
@@ -33,10 +33,16 @@
                         </div>
 						
                         <div class="form-group row">
-                            <label for="godina" class="col-md-4 col-form-label text-md-right">Godina:</label>
+                            <label for="godina" class="col-md-4 col-form-label text-md-right">Godina snimanja:</label>
 
                             <div class="col-md-6">
-                                <input id="godina" type="number" class="form-control" name="godina" required>
+
+                            <select id="godina" type="number" name="godina" class="form-control"> 
+                                    @for ($i = 1900; $i < 2022; $i++)
+                                    <option value="{{$i}}">{{$i}}</option>
+                                    @endfor
+                            </select>
+
                             </div>
                         </div>
 						
