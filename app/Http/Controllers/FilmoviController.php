@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\zanr;
 
-
+use App\Models\Filmovi;
 
 
 class FilmoviController extends Controller
@@ -47,12 +47,12 @@ class FilmoviController extends Controller
      */
     public function store(Request $request)
     {
-        $filmovi = new FilmoviController;
+        $filmovi = new Filmovi;
+
 		$filmovi->naslov = $request->all()['naslov'];
-		if ($request->all()['description']) $filmovi->description = $request->all()['description'];
-		else $filmovi->description = "";
-		$filmovi->amount = $request->all()['amount'];
-		$filmovi->price = $request->all()['price'];
+        $filmovi->idzanr = $request->all()['idzanr'];
+		$filmovi->godina = $request->all()['godina'];
+		$filmovi->trajanje = $request->all()['trajanje'];
 		if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $extension = $request->image->extension();
 			$filmovi->image = "./slike/".$filmovi->name.".".$extension;

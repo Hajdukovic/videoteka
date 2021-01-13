@@ -26,5 +26,4 @@ Route::get('/', function () {
 Route::get('/unos', 'App\Http\Controllers\FilmoviController@zanr')->name('unos');
 
 
-
-Route::get('/unos', 'App\Http\Controllers\FilmoviController@store')->name('noviunos');
+Route::post('/noviunos', 'App\Http\Controllers\FilmoviController@store')->name('noviunos');

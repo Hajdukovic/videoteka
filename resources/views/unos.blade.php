@@ -21,11 +21,11 @@
                         </div>
     
 						<div class="form-group row">
-                            <label for="naslov" class="col-md-4 col-form-label text-md-right">Žanr:</label>
+                            <label for="idzanr" class="col-md-4 col-form-label text-md-right">Žanr:</label>
                             <div class="col-md-6">
-                                <select id="zanr" type="text" name="zanr" class="form-control"> 
+                                <select id="idzanr" type="number" name="idzanr" class="form-control"> 
                                     @foreach($zanr as $z)
-                                    <option value="{{$z->naziv}}">{{$z->naziv}}</option>
+                                    <option value="{{$z->id}}">{{$z->id}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -73,6 +73,10 @@
                 </div>
             </div>
         </div>
+
+
+
+
     </div>
 </div>
 

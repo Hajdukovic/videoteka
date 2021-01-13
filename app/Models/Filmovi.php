@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Filmovi extends Model
 {
     use HasFactory;
+
+    public function zanr()
+    {
+        return $this->belongsTo('App\Models\zanr', 'idzanr');
+    }
+
 }
+
