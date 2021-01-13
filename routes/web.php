@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FilmoviController;
-
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -24,6 +24,8 @@ Route::get('/', function () {
 });
 
 Route::get('/unos', 'App\Http\Controllers\FilmoviController@zanr')->name('unos');
+
+
 
 
 Route::post('/noviunos', 'App\Http\Controllers\FilmoviController@store')->name('noviunos');

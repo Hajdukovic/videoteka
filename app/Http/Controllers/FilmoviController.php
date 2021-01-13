@@ -22,7 +22,8 @@ class FilmoviController extends Controller
         $zanr=zanr::get();
         return view('unos', ['zanr'=>$zanr]);
      }
-
+     
+     
 
     public function index()
     {
@@ -55,9 +56,9 @@ class FilmoviController extends Controller
 		$filmovi->trajanje = $request->all()['trajanje'];
 		if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $extension = $request->image->extension();
-			$filmovi->image = "./slike/".$filmovi->name.".".$extension;
+			$filmovi->image = "./slike/".$filmovi->naziv.".".$extension;
 			$file = $request->file('image');
-			$file->move( "slike", $filmovi->name.".".$extension );
+			$file->move( "slike", $filmovi->naziv.".".$extension );
         }
 		else $filmovi->image = "";
 		$filmovi->save();

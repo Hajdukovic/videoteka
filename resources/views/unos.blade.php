@@ -25,7 +25,7 @@
                             <div class="col-md-6">
                                 <select id="idzanr" type="number" name="idzanr" class="form-control"> 
                                     @foreach($zanr as $z)
-                                    <option value="{{$z->id}}">{{$z->id}}</option>
+                                    <option value="{{$z->id}}">{{$z->naziv}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -55,10 +55,10 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="sl" class="col-md-4 col-form-label text-md-right">Slika naslovnice filma: </label>
+                            <label for="image" class="col-md-4 col-form-label text-md-right">Slika naslovnice filma: </label>
 
                             <div class="col-md-3">
-                                <input id="sl" type="file" class="form-control" name="image">
+                                <input id="image" type="file" class="form-control" name="image">
                             </div>
                         </div>
 
@@ -75,6 +75,35 @@
         </div>
 
 
+<?php
+        use Illuminate\Support\Facades\DB;
+        $filmovis = DB::table('filmovis')->get();
+?>
+
+
+<table class="table sortable">
+            <tr><th>Slika naslovnice</th><th>Naziv filma</th><th>Godina snimanja</th><th>Trajanje [min]</th><th>Brisanje filma</th></tr>
+            @foreach ($filmovis as $f) 
+                 
+
+             <tr>
+                        <td>@if ($f->image)
+                        <img src="{{$f->image}}" height="40px" />
+                        @else
+                        <p>Ovaj film nema naslovnu sliku.</p>
+                        @endif
+                        </td>
+
+                        <td>{{$f->naslov}}</td>
+                        <td>{{$f->godina}}. godina</td>
+                        <td>{{$f->trajanje}} min</td>
+                        <td>Obriši</td>
+                    </tr>
+            
+        @endforeach
+   
+                      
+        </table>
 
 
     </div>
