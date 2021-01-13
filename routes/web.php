@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\FilmoviController;
+
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,4 +23,8 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/unos', function(){return view('unos');})->name('unos');
+Route::post('/unos', 'App\Http\Controllers\FilmoviController@index')->name('unos');
+
+
+
+Route::get('/unos', 'App\Http\Controllers\FilmoviController@zanr');

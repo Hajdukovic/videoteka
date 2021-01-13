@@ -7,7 +7,7 @@
 
 	 	    <a href="{{ route('unos') }}" class="btn btn-outline-primary" role="button" aria-pressed="true">Dodaj novi film</a>
    
-	<h1>Popis filmova</h1>
+	<h3>Popis filmova</h3>
     
 
 
