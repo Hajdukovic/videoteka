@@ -8,9 +8,15 @@ use App\Models\zanr;
 
 use App\Models\Filmovi;
 
+use Illuminate\Routing\Redirector;
+
+use Illuminate\Support\Facades\DB;
+
+
 
 class FilmoviController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -56,14 +62,18 @@ class FilmoviController extends Controller
 		$filmovi->trajanje = $request->all()['trajanje'];
 		if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $extension = $request->image->extension();
-			$filmovi->image = "./slike/".$filmovi->naziv.".".$extension;
+			$filmovi->image = "./slike/".$filmovi->naslov.".".$extension;
 			$file = $request->file('image');
-			$file->move( "slike", $filmovi->naziv.".".$extension );
+			$file->move( "slike", $filmovi->naslov.".".$extension );
         }
 		else $filmovi->image = "";
-		$filmovi->save();
+		$filmovi->save();   
 		return redirect( '/' );
     }
+
+
+    
+
 
     /**
      * Display the specified resource.
@@ -107,6 +117,16 @@ class FilmoviController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+
+        DB::delete('DELETE FROM filmovis WHERE id = ?', [$id]); 
+        return redirect()->route('unos');
+
+
+
+     //      $filmovi = Filmovi::find($id); 
+      //     $filmovi = DB::table('filmovis')->where('id', $id)->get();
+       //    DB::table('filmovis')->where('id',$id)->delete();    
+        //   return redirect()->route('unos');
     }
 }

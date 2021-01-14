@@ -39,7 +39,7 @@
 
                             <select id="godina" type="number" name="godina" class="form-control"> 
                                     @for ($i = 1900; $i < 2022; $i++)
-                                    <option value="{{$i}}">{{$i}}</option>
+                                    <option value="{{$i}}">{{$i}}.</option>
                                     @endfor
                             </select>
 
@@ -97,7 +97,26 @@
                         <td>{{$f->naslov}}</td>
                         <td>{{$f->godina}}. godina</td>
                         <td>{{$f->trajanje}} min</td>
-                        <td>Obriši</td>
+                        
+                        
+                        <td> 
+                        <!-- brisanje određenog filma -->
+                        <button type="submit">
+                                   
+                        <a href="{{ route('unos') }}" onclick="event.preventDefault(); 
+                         document.getElementById('delete-form-{{$f->id}}').submit();"> 
+                         Obriši film  
+                         </a> 
+                        
+                        <form id="delete-form-{{$f->id}}"  
+                         + action="{{route('film.destroy', $f->id)}}" 
+                          method="post"> 
+                          @csrf @method('DELETE') 
+                         </form>
+
+                         </button>
+
+                         </td>
                     </tr>
             
         @endforeach
