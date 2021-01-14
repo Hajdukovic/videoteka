@@ -74,13 +74,13 @@
             </div>
         </div>
 
-
-<?php
+       
+        <!-- povlacenje podataka o filmovima iz baze -->
+        <?php
         use Illuminate\Support\Facades\DB;
         $filmovis = DB::table('filmovis')->get();
-?>
-
-
+        ?>
+        
 <table class="table sortable">
             <tr><th>Slika naslovnice</th><th>Naziv filma</th><th>Godina snimanja</th><th>Trajanje [min]</th><th>Brisanje filma</th></tr>
             @foreach ($filmovis as $f) 
