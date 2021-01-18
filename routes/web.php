@@ -32,3 +32,5 @@ Route::delete('/filmovis/{id}', 'App\Http\Controllers\FilmoviController@destroy'
 
 
 // Route::post('/filmdel/{id}', 'App\Http\Controllers\FilmoviController@destroy')->name('brisanje');
+
+Route::get('/{slovo}','App\Http\Controllers\FilmoviController@show');

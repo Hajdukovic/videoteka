@@ -7,16 +7,48 @@
         </div>
         <br/>
         
-
            <div style = "font-family:Verdana,arial,helvetica;">
-        <?php
-            $slova = range('A', 'Z');
+          
+          
+
+            <?php
+            $slova = range('A', 'Z'); 
+            ?>
             
-            foreach($slova as $slovo) {
-                echo '<a href="">' . $slovo . '</a> | ';
-            }
-        ?>
-        
+            @foreach($slova as $slovo)
+
+            <a href='{{$slovo}}' > {{$slovo}} </a>
+                    
+              @endforeach
+
+      
+
+
+            @if(isset($kolekcija))
+             
+              <table class="table sortable">
+            <tr><th>Slika naslovnice</th><th>Naziv filma</th><th>Godina snimanja</th><th>Trajanje [min]</th></tr>
+            @foreach ($kolekcija as $k) 
+                
+                    <tr>
+                       <td>@if ($k->image)
+                        <img src="{{$k->image}}" height="40px" />
+                        @else
+                        <p>Ovaj film nema naslovnu sliku.</p>
+                        @endif
+                        </td>
+
+                        <td>{{$k->naslov}}</td>
+                        <td>{{$k->godina}}. godina</td>
+                        <td>{{$k->trajanje}} min</td>
+                        
+                    </tr>
+            
+             @endforeach
+                       
+            </table>
+
+            @endif
 
 
 
@@ -28,7 +60,8 @@
     <h3>Popis svih filmova</h3>
    
     <?php
-        use Illuminate\Support\Facades\DB;
+    use Illuminate\Support\Facades\DB;
+
         $filmovis = DB::table('filmovis')->get();
     ?>
 <table class="table sortable">

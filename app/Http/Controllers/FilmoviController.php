@@ -71,8 +71,10 @@ class FilmoviController extends Controller
 		return redirect( '/' );
     }
 
-
     
+    
+   
+
 
 
     /**
@@ -81,9 +83,16 @@ class FilmoviController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slovo)
     {
-        //
+             $sl=$slovo;  
+
+        $kolekcija = DB::table('filmovis')
+        ->where('naslov', 'like', $sl.'%')
+        ->get()  ; 
+
+        return view( 'index', ['kolekcija' => $kolekcija ] ); 
+          
     }
 
     /**
